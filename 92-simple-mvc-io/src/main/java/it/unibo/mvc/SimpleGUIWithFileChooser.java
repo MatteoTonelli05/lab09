@@ -22,12 +22,12 @@ import javax.swing.JTextField;
  */
 public final class SimpleGUIWithFileChooser {
 
-    private static Controller controller;
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
     public SimpleGUIWithFileChooser(Controller ctrl) {
-        controller = ctrl;
+
+        Controller controller = ctrl;
         JPanel canvas = new JPanel();
 
         JPanel downCanvas = new JPanel();

@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
  * A very simple program using a graphical interface.
  * 
  */
-public final class SimpleGUI {
+public class SimpleGUI {
 
     private static final int PROPORTION = 4;
     private final JFrame frame = new JFrame("My first java graphical interface");
