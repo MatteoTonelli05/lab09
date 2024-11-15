@@ -41,9 +41,15 @@ public class BadIOGUI {
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
+        /*
+         * My code
+         */
+        final JPanel innerCanvas = new JPanel();
+        innerCanvas.setLayout(new BoxLayout(innerCanvas, BoxLayout.X_AXIS));
+        canvas.add(innerCanvas, BorderLayout.CENTER);
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
+        innerCanvas.add(write, BorderLayout.CENTER);
+        frame.setContentPane(innerCanvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -81,6 +87,7 @@ public class BadIOGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
@@ -99,6 +106,6 @@ public class BadIOGUI {
      * @param args ignored
      */
     public static void main(final String... args) {
-       new BadIOGUI().display();
+        new BadIOGUI().display();
     }
 }
