@@ -27,14 +27,14 @@ public final class SimpleGUIWithFileChooser {
 
     public SimpleGUIWithFileChooser(Controller ctrl) {
 
-        Controller controller = ctrl;
-        JPanel canvas = new JPanel();
+        final Controller controller = ctrl;
+        final JPanel canvas = new JPanel();
 
-        JPanel downCanvas = new JPanel();
-        JTextArea txtArea = new JTextArea();
-        JTextField showFile = new JTextField(20);
-        JButton browseButton = new JButton("Browse...");
-        JPanel innerCanvas = new JPanel();
+        final JPanel downCanvas = new JPanel();
+        final JTextArea txtArea = new JTextArea();
+        final JTextField showFile = new JTextField(20);
+        final JButton browseButton = new JButton("Browse...");
+        final JPanel innerCanvas = new JPanel();
         innerCanvas.setLayout(new BorderLayout());
         innerCanvas.add(showFile, BorderLayout.CENTER);
         innerCanvas.add(browseButton, BorderLayout.LINE_END);

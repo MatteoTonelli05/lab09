@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,21 +19,20 @@ public class SimpleGUI {
     private static final int PROPORTION = 4;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
-    public SimpleGUI() {
-        JPanel canvas = new JPanel();
+    public SimpleGUI(final Controller ctrl) {
+        final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
-        JTextArea txtArea = new JTextArea();
+        final JTextArea txtArea = new JTextArea();
         canvas.add(txtArea);
         txtArea.setVisible(true);
-        JButton saveBtn = new JButton("Save");
+        final JButton saveBtn = new JButton("Save");
         canvas.add(saveBtn, BorderLayout.SOUTH);
         saveBtn.setVisible(true);
         saveBtn.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            public void actionPerformed(final ActionEvent e) {
+                ctrl.saveOnCurrentFile(txtArea.getText());
             }
 
         });
@@ -54,7 +52,7 @@ public class SimpleGUI {
 
     static public void main(String args[]) {
         Controller mainCtrl = new Controller();
-        SimpleGUIWithFileChooser app = new SimpleGUIWithFileChooser(mainCtrl);
+        SimpleGUI app = new SimpleGUI(mainCtrl);
         app.display();
     }
 
