@@ -8,33 +8,48 @@ import java.nio.charset.StandardCharsets;
 /**
  * Application controller. Performs the I/O.
  */
-public class Controller{
+public class Controller {
     private File currentFile;
 
+    /**
+    * Constructor for class Controller.
+    * @param currentFile the starter file to control.
+    */
     public Controller(final File currentFile) {
-        setCurrentFile(currentFile);
-    }
-
-    public Controller() {
-        this(new File(System.getProperty("user.home") + System.getProperty("file.separator") + "output.txt"));
-    }
-
-    public void setCurrentFile(File currentFile) {
         this.currentFile = currentFile;
     }
 
+    /**
+    * Another constructor for class Controller.
+    */
+    public Controller() { 
+        this(new File(System.getProperty("user.home") + System.getProperty("file.separator") + "output.txt"));
+    }
+
+    /**
+    * Set the file to control.
+    * @param currentFile the file to control.
+    */
+    public void setCurrentFile(final File currentFile) {
+        this.currentFile = currentFile;
+    }
+
+    /**
+    * Get the file assigned to controller.
+    * @return currentFile.
+    */
     public File getCurrentFile() {
         return this.currentFile;
     }
 
-    public void setContentFile(){
-
-    }
-
+    /**
+    * Set the content of currentFile.
+    * @param text text to print in the file.
+    */
     public void saveOnCurrentFile(final String text) {
         try (PrintStream out = new PrintStream(currentFile, StandardCharsets.UTF_8)) {
             out.println(text);
-        }catch(IOException exc){
+        } catch (IOException exc) {
             exc.printStackTrace(); //NOPMD: this is allowed only for exercise purpose
         }
     }

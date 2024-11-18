@@ -19,6 +19,10 @@ public class SimpleGUI {
     private static final int PROPORTION = 4;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
+    /**
+    * Contructor for the SimpleGUI (view).
+    * @param ctrl controller
+    */
     public SimpleGUI(final Controller ctrl) {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
@@ -39,6 +43,9 @@ public class SimpleGUI {
         frame.add(canvas);
     }
 
+    /**
+     * Method to inizialize the frame.
+     */
     public void display() {
 
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -50,9 +57,13 @@ public class SimpleGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    static public void main(String args[]) {
-        Controller mainCtrl = new Controller();
-        SimpleGUI app = new SimpleGUI(mainCtrl);
+    /**
+     * main.
+     * @param args ignore
+     */
+    public static void main(final String[] args) {
+        final Controller mainCtrl = new Controller();
+        final SimpleGUIWithFileChooser app = new SimpleGUIWithFileChooser(mainCtrl);
         app.display();
     }
 

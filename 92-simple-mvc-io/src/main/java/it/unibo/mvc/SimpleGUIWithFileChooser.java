@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -25,60 +26,16 @@ public final class SimpleGUIWithFileChooser {
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
-    public SimpleGUIWithFileChooser(Controller ctrl) {
-
-        final Controller controller = ctrl;
-        final JPanel canvas = new JPanel();
-
-        final JPanel downCanvas = new JPanel();
-        final JTextArea txtArea = new JTextArea();
-        final JTextField showFile = new JTextField(20);
-        final JButton browseButton = new JButton("Browse...");
-        final JPanel innerCanvas = new JPanel();
-        innerCanvas.setLayout(new BorderLayout());
-        innerCanvas.add(showFile, BorderLayout.CENTER);
-        innerCanvas.add(browseButton, BorderLayout.LINE_END);
-        canvas.add(innerCanvas, BorderLayout.NORTH);
-        showFile.setEditable(true);
-        showFile.setEnabled(false);
-        browseButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser savefile = new JFileChooser();
-                int result = savefile.showSaveDialog(savefile);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    showFile.setText(ctrl.getCurrentFile().toPath().toString());
-                } else if (result == JFileChooser.CANCEL_OPTION) {
-                    return;
-                } else {
-                    JOptionPane.showMessageDialog(null, "an error has occured");
-                }
-            }
-
-        });
-        showFile.setVisible(true);
-        browseButton.setVisible(true);
-        innerCanvas.setVisible(true);
-        canvas.setVisible(true);
-        frame.add(canvas);
-        downCanvas.setLayout(new BoxLayout(downCanvas, BoxLayout.Y_AXIS));
-        downCanvas.add(txtArea, BorderLayout.CENTER);
-        txtArea.setVisible(true);
-        JButton saveBtn = new JButton("Save");
-        downCanvas.add(saveBtn, BorderLayout.SOUTH);
-        saveBtn.setVisible(true);
-        saveBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-
-        });
-        frame.add(downCanvas, BorderLayout.SOUTH);
+    /**
+     * constructor.
+     * @param ctrl controller for the GUI.
+     */
+    public SimpleGUIWithFileChooser(final Controller ctrl) {
     }
 
+    /**
+     * inizialize the frame.
+     */
     public void display() {
 
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
