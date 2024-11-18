@@ -5,10 +5,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -23,14 +19,60 @@ import javax.swing.JTextField;
  */
 public final class SimpleGUIWithFileChooser {
 
-    private static final int PROPORTION = 3;
+    private static final int PROPORTION = 4;
     private final JFrame frame = new JFrame("My first java graphical interface");
 
     /**
-     * constructor.
-     * @param ctrl controller for the GUI.
-     */
+    * Contructor for the SimpleGUI (view).
+    * @param ctrl controller
+    */
     public SimpleGUIWithFileChooser(final Controller ctrl) {
+        final JPanel canvas = new JPanel();
+        canvas.setLayout(new BorderLayout());
+        final JTextArea txtArea = new JTextArea();
+        canvas.add(txtArea);
+        txtArea.setVisible(true);
+        final JButton saveBtn = new JButton("Save");
+        canvas.add(saveBtn, BorderLayout.SOUTH);
+        saveBtn.setVisible(true);
+        saveBtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                ctrl.saveOnCurrentFile(txtArea.getText());
+            }
+
+        });
+        frame.add(canvas);
+
+        final JPanel secondPanel = new JPanel();
+        secondPanel.setLayout(new BorderLayout());
+        canvas.add(secondPanel, BorderLayout.NORTH);
+        final JTextField jfield = new JTextField();
+        final JButton jbutton = new JButton("Browse...");
+        secondPanel.add(jfield, BorderLayout.CENTER);
+        secondPanel.add(jbutton, BorderLayout.LINE_END);
+        jfield.setEnabled(false);
+        jfield.setText(ctrl.getCurrentFile().getPath());
+        jbutton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final JFileChooser fileChooser = new JFileChooser();
+                final int choose = fileChooser.showSaveDialog(fileChooser);
+                switch (choose) {
+                    case JFileChooser.APPROVE_OPTION:
+                        ctrl.setCurrentFile(fileChooser.getSelectedFile());
+                        jfield.setText(ctrl.getContent());
+                        break;
+                    case JFileChooser.CANCEL_OPTION:
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(fileChooser, "an error has occurred");
+                        break;
+                }
+            }
+        });
     }
 
     /**

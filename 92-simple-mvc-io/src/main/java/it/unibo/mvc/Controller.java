@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.List;
 
 /**
  * Application controller. Performs the I/O.
@@ -52,6 +54,23 @@ public class Controller {
         } catch (IOException exc) {
             exc.printStackTrace(); //NOPMD: this is allowed only for exercise purpose
         }
+    }
+
+    /**
+     * Return content.
+     * @return concatenate strings.
+     */
+    public String getContent() {
+        String out = "";
+        try {
+                final List<String> lines = Files.readAllLines(currentFile.toPath());
+                for (final String line: lines) {
+                    out = out.concat(line);
+                } 
+            } catch (IOException exc) {
+                exc.printStackTrace(); // NOPMD: allowed as this is just an exercise
+            }
+        return out;
     }
 
 }
