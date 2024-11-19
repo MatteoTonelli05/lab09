@@ -1,6 +1,5 @@
 package it.unibo.mvc;
 
-import java.security.InvalidParameterException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public final class SimpleController implements Controller {
     @Override
     public void setNextStringToPrint(final String nextString) {
         if (nextString == null) {
-            throw new InvalidParameterException("String cannot be null.");
+            throw new IllegalArgumentException("String cannot be null.");
         } else {
             stringToPrint = nextString;
         }
