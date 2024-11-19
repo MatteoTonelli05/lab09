@@ -13,5 +13,5 @@ application {
 }
 
 dependencies {
-    compileOnly("com.github.spotbugs:spotbugs-annotations:4.7.3") // Use the latest version
+    compileOnly("com.github.spotbugs:spotbugs-annotations:4.8.6") // Use the latest version
 }

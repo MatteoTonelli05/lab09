@@ -27,23 +27,23 @@ public final class SimpleGUIWithFileChooser {
     * @param ctrl controller
     */
     public SimpleGUIWithFileChooser(final Controller ctrl) {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Panel configuration
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
-        final JTextArea txtArea = new JTextArea();
-        canvas.add(txtArea);
-        txtArea.setVisible(true);
-        final JButton saveBtn = new JButton("Save");
-        canvas.add(saveBtn, BorderLayout.SOUTH);
-        saveBtn.setVisible(true);
-        saveBtn.addActionListener(new ActionListener() {
-
+        // Text area
+        final JTextArea text = new JTextArea();
+        // Save button
+        final JButton save = new JButton("Save");
+        save.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(final ActionEvent e) {
-                ctrl.saveOnCurrentFile(txtArea.getText());
+            public void actionPerformed(final ActionEvent event) {
+                ctrl.saveOnCurrentFile(text.getText());
             }
-
         });
-        frame.add(canvas);
+        // Assemble text and button
+        canvas.add(text, BorderLayout.CENTER);
+        canvas.add(save, BorderLayout.SOUTH);
 
         final JPanel secondPanel = new JPanel();
         secondPanel.setLayout(new BorderLayout());
@@ -73,6 +73,7 @@ public final class SimpleGUIWithFileChooser {
                 }
             }
         });
+        frame.add(canvas);
     }
 
     /**
