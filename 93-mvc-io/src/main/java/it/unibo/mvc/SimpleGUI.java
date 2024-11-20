@@ -21,8 +21,10 @@ import javax.swing.JTextField;
 public final class SimpleGUI {
     private static final int PROPORTION = 4;
     private final JFrame frame = new JFrame();
+
     /**
      * constructor.
+     * 
      * @param ctrl controller of the view.
      */
     public SimpleGUI(final Controller ctrl) {
@@ -41,11 +43,12 @@ public final class SimpleGUI {
         southPanel.add(showHistory);
         canvas.add(southPanel, BorderLayout.SOUTH);
         frame.add(canvas);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         print.addActionListener(new ActionListener() {
 
             /**
              * ignore.
+             * 
              * @param e ignore.
              */
             @Override
@@ -57,7 +60,7 @@ public final class SimpleGUI {
                         ctrl.printCurrentString();
                     }
                 } catch (IOException e1) {
-                    e1.printStackTrace(); //NOPMD allowed for exercise
+                    e1.printStackTrace(); // NOPMD allowed for exercise
                 }
             }
         });
@@ -66,6 +69,7 @@ public final class SimpleGUI {
 
             /**
              * ignore.
+             * 
              * @param e ignore.
              */
             @Override
@@ -90,6 +94,7 @@ public final class SimpleGUI {
 
     /**
      * main.
+     * 
      * @param args ignore.
      */
     public static void main(final String[] args) {

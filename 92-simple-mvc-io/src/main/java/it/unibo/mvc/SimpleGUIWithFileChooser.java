@@ -23,9 +23,10 @@ public final class SimpleGUIWithFileChooser {
     private final JFrame frame = new JFrame("My first java graphical interface");
 
     /**
-    * Contructor for the SimpleGUI (view).
-    * @param ctrl controller
-    */
+     * Contructor for the SimpleGUI (view).
+     * 
+     * @param ctrl controller
+     */
     public SimpleGUIWithFileChooser(final Controller ctrl) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Panel configuration

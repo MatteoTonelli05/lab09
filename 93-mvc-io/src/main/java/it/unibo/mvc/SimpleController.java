@@ -56,7 +56,7 @@ public final class SimpleController implements Controller {
         if (stringToPrint == null) {
             throw new IllegalStateException("There is no string set");
         } else {
-            System.out.println(stringToPrint); //NOPMD only for exercise purpose
+            System.out.println(stringToPrint); // NOPMD only for exercise purpose
             stringsPrinted.add(stringToPrint);
         }
     }

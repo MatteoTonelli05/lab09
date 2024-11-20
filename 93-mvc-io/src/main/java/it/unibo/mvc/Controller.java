@@ -10,7 +10,7 @@ public interface Controller {
     /**
      * 
      * @param nextString next string to print
-     * @throws IOException 
+     * @throws IOException
      */
     void setNextStringToPrint(String nextString) throws IOException;
 

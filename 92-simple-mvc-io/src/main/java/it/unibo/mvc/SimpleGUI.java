@@ -20,9 +20,10 @@ public class SimpleGUI {
     private final JFrame frame = new JFrame("My first java graphical interface");
 
     /**
-    * Contructor for the SimpleGUI (view).
-    * @param ctrl controller
-    */
+     * Contructor for the SimpleGUI (view).
+     * 
+     * @param ctrl controller
+     */
     public SimpleGUI(final Controller ctrl) {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
@@ -59,6 +60,7 @@ public class SimpleGUI {
 
     /**
      * main.
+     * 
      * @param args ignore
      */
     public static void main(final String[] args) {
